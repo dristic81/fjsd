@@ -3,57 +3,127 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Advanced CSS - Assignment 1</title>
+    <title>Advanced CSS - Assignment 2</title>
     <style>
-		a[href^="https://www.google.com/"] { 
-			color: green; 
+		#main-div  {
+			width: 600px;
+			height: 500px;
+			position: relative;
+			margin: 80px auto;
+			background-color: #050210;
 		}
 		
-		a[href^="https://www.link-group.eu/"] { 
-			color: red; 
+		#main-div::after {
+			content: "Advanced CSS - Assignment 2";
+			color: white;
+		}
+	
+		.enableBlur>* {
+			filter: blur(50px);
+		}
+
+		.disableBlur {
+			filter: blur(0);
 		}
 		
-		#second-div > p:nth-of-type(odd) {
-			color: red;
+		#shadow-div {
+			width: 360px;
+			height: 354px;
+			position: absolute;
+			border-radius: 100%;
+			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+			opacity: 0.8;
+			transform: translate(120px, 73px);
+			
+			animation-name: shadow-div-animation;
+			animation-duration: 1s;
+			animation-delay: 0s;
+			transition-timing-function: linear;
+			animation-iteration-count: infinite;
 		}
 		
-		#second-div > p:nth-of-type(even) {
-			color: blue;
+		@keyframes shadow-div-animation {
+			from {
+				transform: translate(120px, 73px) rotate(0deg);
+			}
+			to {
+				 transform: translate(120px, 73px) rotate(360deg);
+			}
 		}
 		
-		#first-div > p:nth-of-type(1)::after,
-		#first-div > p:nth-of-type(2)::after {
-			content: "– NEW";
-			color: yellow;
+		#outer-div {
+			width: 320px;
+			height: 320px;
+			position: absolute;
+			border-radius: 100%;
+			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+			transform: translate(140px, 90px);
+			
+			animation-name: outer-div-animation;
+			animation-duration: 1s;
+			animation-delay: 0s;
+			transition-timing-function: linear;
+			animation-iteration-count: infinite;
 		}
 		
-		body > p:last-child:hover {
-			font-style: italic;
+		@keyframes outer-div-animation {
+			from {
+				transform: translate(140px, 90px) rotate(0deg);
+			}
+			to {
+				 transform: translate(140px, 90px) rotate(360deg);
+			}
 		}
+		
+		#inner-div {
+			width: 270px;
+			height: 270px;
+			position: absolute;
+			border-radius: 100%;
+			background-color: rgb(10, 10, 36);
+			transform: translate(25px, 25px);
+		}
+		
+		#inner-content-div {
+			width: 0px;
+			height: 0px;
+			position: absolute;
+			border-radius: 100%;
+			filter: blur(6px);
+			background-color: rgb(22, 10, 44);
+			transform: translate(135px, 135px);
+		
+			animation-name: inner-content-animation;
+			animation-duration: 2s;
+			transition-timing-function: linear;
+			animation-iteration-count: infinite;
+		}
+
+		@keyframes inner-content-animation {
+			from {
+				transform: translate(135px, 135px);
+				width: 0px;
+				height: 0px;
+			}
+			to {
+				 transform: translate(0px, 0px);
+				 width: 270px;
+				 height: 270px;
+			}
+		}
+
     </style>
 </head>
 
 <body>
-    <h1>Main Heading</h1>
-    <p>Paragraph 1</p>
-    <a href="https://www.google.com/">Google</a>
-    <a href="https://www.google.com/doodles">Google Doodles</a>
-    <a href="https://www.link-group.eu/" target="_blank">Goto Link Group</a>
-    <div id="first-div">
-        <h2>Subheading</h2>
-        <p>Paragraph 2</p>
-        <p>Paragraph 3</p>
-        <div id="second-div">
-            <h3>Sub subheading</h3>
-            <p>Paragraph 4</p>
-            <p>Paragraph 5</p>
-            <p>Paragraph 6</p>
-            <p>Paragraph 7</p>
-            <p>Paragraph 8</p>
-        </div>
-    </div>
-    <p>Paragraph 9</p>
-    <p>Paragraph 10</p>
+	<div id="main-div" class="enableBlur">
+		<div id="shadow-div" ></div>	
+		<div id="outer-div" class="disableBlur" >
+			<div id="inner-div">
+				<div id="inner-content-div"></div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
