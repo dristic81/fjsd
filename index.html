@@ -18,7 +18,7 @@
 			color: white;
 		}
 	
-		.enableBlur>* {
+		.enableBlur > * {
 			filter: blur(50px);
 		}
 
@@ -34,12 +34,7 @@
 			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
 			opacity: 0.8;
 			transform: translate(120px, 73px);
-			
-			animation-name: shadow-div-animation;
-			animation-duration: 1s;
-			animation-delay: 0s;
-			transition-timing-function: linear;
-			animation-iteration-count: infinite;
+			animation: shadow-div-animation 1s linear 0s infinite, shadow-div-animation 1s linear 0.5s infinite;
 		}
 		
 		@keyframes shadow-div-animation {
@@ -58,12 +53,7 @@
 			border-radius: 100%;
 			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
 			transform: translate(140px, 90px);
-			
-			animation-name: outer-div-animation;
-			animation-duration: 1s;
-			animation-delay: 0s;
-			transition-timing-function: linear;
-			animation-iteration-count: infinite;
+			animation: outer-div-animation 1s linear 0s infinite, outer-div-animation 1s linear 0.5s infinite;
 		}
 		
 		@keyframes outer-div-animation {
@@ -106,9 +96,9 @@
 				height: 0px;
 			}
 			to {
-				 transform: translate(0px, 0px);
-				 width: 270px;
-				 height: 270px;
+				 transform: translate(6px, 6px);
+				 width: 258px;
+				 height: 258px;
 			}
 		}
 
