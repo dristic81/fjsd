@@ -3,102 +3,121 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Advanced CSS - Assignment 2</title>
-    <style>
-		#main-div  {
-			width: 600px;
-			height: 500px;
-			position: relative;
-			margin: 80px auto;
-			background-color: #050210;
-		}
-		
-		#main-div::after {
-			content: "Advanced CSS - Assignment 2";
-			color: white;
-		}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS - Assignment 3</title>
+    
+	<style>
 	
-		.enableBlur > * {
-			filter: blur(50px);
+		body {
+		   font-size: 1em;
 		}
 
-		.disableBlur {
-			filter: blur(0);
-		}
-		
-		#shadow-div {
-			width: 360px;
-			height: 354px;
-			position: absolute;
-			border-radius: 100%;
-			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
-			opacity: 0.8;
-			transform: translate(120px, 73px);
-			animation: shadow-div-animation 1s linear 0s infinite, shadow-div-animation 1s linear 0.5s infinite;
-		}
-		
-		@keyframes shadow-div-animation {
-			from {
-				transform: translate(120px, 73px) rotate(0deg);
-			}
-			to {
-				 transform: translate(120px, 73px) rotate(360deg);
-			}
-		}
-		
-		#outer-div {
-			width: 320px;
-			height: 320px;
-			position: absolute;
-			border-radius: 100%;
-			background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
-			transform: translate(140px, 90px);
-			animation: outer-div-animation 1s linear 0s infinite, outer-div-animation 1s linear 0.5s infinite;
-		}
-		
-		@keyframes outer-div-animation {
-			from {
-				transform: translate(140px, 90px) rotate(0deg);
-			}
-			to {
-				 transform: translate(140px, 90px) rotate(360deg);
-			}
-		}
-		
-		#inner-div {
-			width: 270px;
-			height: 270px;
-			position: absolute;
-			border-radius: 100%;
-			background-color: rgb(10, 10, 36);
-			transform: translate(25px, 25px);
-		}
-		
-		#inner-content-div {
-			width: 0px;
-			height: 0px;
-			position: absolute;
-			border-radius: 100%;
-			filter: blur(6px);
-			background-color: rgb(22, 10, 44);
-			transform: translate(135px, 135px);
-		
-			animation-name: inner-content-animation;
-			animation-duration: 2s;
-			transition-timing-function: linear;
-			animation-iteration-count: infinite;
+		p {
+		   font-size: 0.9em;
 		}
 
-		@keyframes inner-content-animation {
-			from {
-				transform: translate(135px, 135px);
-				width: 0px;
-				height: 0px;
+		h1 {
+		   font-size: 1.2em;
+		}
+		
+		:root
+		{
+			--pading: 1vw;
+		}
+		
+		.container {
+			max-width: 960px;
+			width: 90%;
+			margin: 0 auto;
+		}
+		
+		.row {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: flex-start;
+		}
+		
+		.column {
+			flex-basis: 20%;
+			box-sizing: border-box;
+			padding: var(--pading) var(--pading) 0px var(--pading);
+		}
+		
+		.heading {
+			flex-basis: 100%;
+			padding: var(--pading) var(--pading) 0px var(--pading);
+		}
+		
+		.box {
+			min-height: 150px;
+			max-height: 300px;
+			height: 10vh;
+			position: relative;
+			background-color: rgb(107, 162, 217);
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-image: url("placeholder-image-200w.png");
+		}
+		
+		.box:after {
+			content: "Image Title";
+			display: block;
+			position: absolute;
+			width: 100%;
+			font-size: 1em;
+			text-align: center;
+			bottom: 0px;
+			background-color: rgb(250, 247, 255);
+		}
+		
+		.paragraph {
+			flex-basis: 100%;
+			padding: 0px var(--pading) var(--pading) var(--pading);
+		}
+		
+		/*Responsive layout*/
+		@media screen and (max-width: 768px) {
+			.column {
+				flex-basis: 33.33%;
 			}
-			to {
-				 transform: translate(6px, 6px);
-				 width: 258px;
-				 height: 258px;
+		}
+		@media screen and (max-width: 414px) {
+			.column {
+				flex-basis: 100%;
+			}
+		}
+
+		/*Responsive text*/
+		@media screen and (max-width: 768px) {
+		   body {
+			  font-size: 0.9em;
+		   }
+		}
+		@media screen and (max-width: 414px) {
+		   body {
+			  font-size: 0.8em;
+		   }
+		}
+
+		/*Responsive image*/
+		@media screen and (max-width: 768px) {
+			.box {
+				background-image: url("placeholder-image-250w.png");
+				height: 15vh;
+			}
+		}
+		@media screen and (max-width: 414px) {
+			.box {
+				background-image: url("placeholder-image-400w.png");
+				height: 20vh;
+			}
+		}
+		@media only screen and (min-resolution: 2dppx) and (max-width: 414px),
+		@media only screen and (min-resolution: 3dppx) and (max-width: 414px)
+		{
+			.box {
+				background-image: url("placeholder-image-400@2w.png");
 			}
 		}
 
@@ -106,11 +125,49 @@
 </head>
 
 <body>
-	<div id="main-div" class="enableBlur">
-		<div id="shadow-div" ></div>	
-		<div id="outer-div" class="disableBlur" >
-			<div id="inner-div">
-				<div id="inner-content-div"></div>
+	<div class="container">
+		<div class="row">
+			<div class="heading">
+				<h1>Gallery Heading</h1>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="column">
+				<div class="box"></div>
+			</div>
+			<div class="paragraph">
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus condimentum cursus. Donec malesuada eu felis ac accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer ultricies elit nibh, quis suscipit massa efficitur eget. Aenean ac venenatis sapien, nec faucibus dolor. Nam vel massa quis dui lobortis vestibulum in et nisl. Nam posuere dolor dui, non finibus elit euismod id. Cras eu commodo sem, nec condimentum nisi. Suspendisse laoreet, augue ac elementum tempus, arcu eros ultrices nunc, volutpat pulvinar ipsum magna ut mauris. Proin ac arcu venenatis, bibendum urna nec, vehicula libero. In euismod at lectus tristique sollicitudin. Quisque consequat sed elit vitae viverra.
+				Donec nunc ligula, lobortis ac mattis sit amet, imperdiet non tellus. Nam et neque eros. Donec sit amet nisl sodales, blandit arcu eget, sagittis velit. Mauris pharetra sagittis sodales. Praesent enim augue, imperdiet quis dui finibus, tristique vestibulum sem. Nulla maximus commodo nisl, porta venenatis sapien sollicitudin eget. Fusce lectus est, ornare quis velit fringilla, venenatis efficitur felis. Integer nec pellentesque lacus. Aliquam eget vehicula metus.
+				Praesent laoreet neque ac aliquet pellentesque. In placerat pretium arcu, nec bibendum sem consequat id. Sed at semper felis. Donec sed sagittis ipsum. Nunc eget ante ex. Curabitur pulvinar tristique metus, ac congue magna imperdiet et. Phasellus urna ligula, molestie ac ex at, accumsan suscipit ipsum. Proin mattis congue justo a dignissim. Etiam feugiat sapien nibh, eget cursus dui sollicitudin sed. Aenean eget porta erat, eu viverra nisi. Sed egestas convallis aliquam. Nam luctus sagittis nisi sit amet accumsan. Donec eu fermentum tortor. Cras in placerat nunc.
+				Sed in libero in sem aliquet tempor. Donec a sapien in purus efficitur vehicula eu porta orci. Nullam ac sapien in erat aliquam dictum. Nunc non ex sed metus malesuada interdum. Cras sed sapien id purus tempus viverra a ut augue. Proin lacinia egestas rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque sagittis ullamcorper est ut venenatis. Nulla pellentesque, libero eu rutrum molestie, augue mi dapibus augue, quis interdum tortor dui malesuada arcu. Nulla at leo in libero varius iaculis euismod mattis sapien. Nam laoreet ligula et arcu ornare pretium. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+				Aliquam erat volutpat. Fusce quis dignissim justo. Mauris in dui at enim luctus fermentum. Nunc eget odio ut ligula laoreet iaculis. Quisque rutrum ex et porttitor efficitur. Donec sed congue orci. Fusce auctor vitae lacus ac finibus. Donec lobortis hendrerit massa, non venenatis arcu aliquet eu. Nulla rutrum, lacus nec iaculis fermentum, quam elit vehicula nisl, vel faucibus lorem ex vel mi. Nullam mattis felis ante, vitae lacinia velit dignissim sit amet. Morbi volutpat ex sed feugiat laoreet. Duis vitae ullamcorper quam. Donec quis nunc sollicitudin velit semper venenatis ut quis ex. Quisque posuere dapibus rutrum. Ut convallis consequat dolor, in pharetra velit gravida ac.
+				</p>
 			</div>
 		</div>
 	</div>
